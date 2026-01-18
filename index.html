@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Vega Junkys</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#111;
+  --panel:#1c1c1c;
+  --text:#fff;
+  --accent:#00c6ff;
+  --glow:16px;
+}
+
+.light{
+  --bg:#fff;
+  --panel:#f0f0f0;
+  --text:#000;
+  --accent:#0066ff;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+
+/* LOGOS ARRIBA */
+.top-logos{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  padding:18px 0 6px;
+}
+
+.top-logos img{
+  display:block;
+}
+
+.logo{
+  width:160px;
+}
+
+.icon{
+  width:64px;
+}
+
+/* BRILLO */
+.glow{
+  animation:glowColors 6s infinite;
+}
+
+@keyframes glowColors{
+  0%   { filter:drop-shadow(0 0 var(--glow) blue); }
+  10%  { filter:drop-shadow(0 0 var(--glow) deeppink); }
+  20%  { filter:drop-shadow(0 0 var(--glow) red); }
+  30%  { filter:drop-shadow(0 0 var(--glow) saddlebrown); }
+  40%  { filter:drop-shadow(0 0 var(--glow) white); }
+  50%  { filter:drop-shadow(0 0 var(--glow) black); }
+  60%  { filter:drop-shadow(0 0 var(--glow) yellow); }
+  70%  { filter:drop-shadow(0 0 var(--glow) lime); }
+  80%  { filter:drop-shadow(0 0 var(--glow) purple); }
+  100% { filter:drop-shadow(0 0 var(--glow) blue); }
+}
+
+/* PANEL MENÚ */
+.panel{
+  max-width:420px;
+  margin:16px auto 30px;
+  background:var(--panel);
+  border-radius:14px;
+  padding:22px;
+  text-align:center;
+}
+
+h2{ margin:6px 0 2px; }
+p{ margin:0 0 12px; opacity:.9; }
+
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+li{ margin:10px 0; }
+
+button{
+  width:100%;
+  padding:14px;
+  font-size:18px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  background:var(--accent);
+  color:#000;
+}
+
+button.secondary{
+  background:transparent;
+  color:var(--text);
+  border:2px solid var(--accent);
+}
+</style>
+</head>
+
+<body>
+
+<!-- DOS IMÁGENES ARRIBA -->
+<div class="top-logos">
+  <img src="logo.png" class="logo glow" alt="Logo">
+  <img src="icon.png" class="icon glow" alt="Icon">
+</div>
+
+<!-- MENÚ -->
+<div class="panel">
+  <h2>Vega Junkys</h2>
+  <p>Incredibox • Sprunki Mod</p>
+
+  <ul>
+    <li><button onclick="location.href='game.html'">▶ PLAY</button></li>
+    <li>
+      <button class="secondary"
+        onclick="window.open('https://incredibox-vega-junkys.fandom.com')">
+        📘 WIKI FANDOM
+      </button>
+    </li>
+    <li><button class="secondary" onclick="toggleGlow()">✨ BRILLO ON / OFF</button></li>
+    <li><button class="secondary" onclick="brilloMas()">🔆 BRILLO +</button></li>
+    <li><button class="secondary" onclick="brilloMenos()">🔅 BRILLO −</button></li>
+    <li><button class="secondary" onclick="toggleMode()">🌗 MODO BLANCO / NEGRO</button></li>
+  </ul>
+</div>
+
+<script>
+let glow = 16;
+
+function toggleGlow(){
+  document.querySelectorAll('.logo, .icon')
+    .forEach(el => el.classList.toggle('glow'));
+}
+
+function brilloMas(){
+  glow = Math.min(glow + 4, 40);
+  document.documentElement.style.setProperty('--glow', glow + 'px');
+}
+
+function brilloMenos(){
+  glow = Math.max(glow - 4, 6);
+  document.documentElement.style.setProperty('--glow', glow + 'px');
+}
+
+function toggleMode(){
+  document.body.classList.toggle('light');
+}
+</script>
+
+</body>
+</html>
