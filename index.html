@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Vega Junkys</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 :root{
   --bg:#111;
@@ -12,7 +11,7 @@
   --text:#fff;
   --accent:#00c6ff;
   --glow:16px;
-}
+}  
 
 .light{
   --bg:#fff;
@@ -43,13 +42,8 @@ body{
   display:block;
 }
 
-.logo{
-  width:160px;
-}
-
-.icon{
-  width:64px;
-}
+.logo{ width:160px; }
+.icon{ width:64px; }
 
 /* BRILLO */
 .glow{
@@ -57,16 +51,16 @@ body{
 }
 
 @keyframes glowColors{
-  0%   { filter:drop-shadow(0 0 var(--glow) blue); }
-  10%  { filter:drop-shadow(0 0 var(--glow) deeppink); }
-  20%  { filter:drop-shadow(0 0 var(--glow) red); }
-  30%  { filter:drop-shadow(0 0 var(--glow) saddlebrown); }
-  40%  { filter:drop-shadow(0 0 var(--glow) white); }
-  50%  { filter:drop-shadow(0 0 var(--glow) black); }
-  60%  { filter:drop-shadow(0 0 var(--glow) yellow); }
-  70%  { filter:drop-shadow(0 0 var(--glow) lime); }
-  80%  { filter:drop-shadow(0 0 var(--glow) purple); }
-  100% { filter:drop-shadow(0 0 var(--glow) blue); }
+0%   { filter:drop-shadow(0 0 var(--glow) blue); }
+10%  { filter:drop-shadow(0 0 var(--glow) deeppink); }
+20%  { filter:drop-shadow(0 0 var(--glow) red); }
+30%  { filter:drop-shadow(0 0 var(--glow) saddlebrown); }
+40%  { filter:drop-shadow(0 0 var(--glow) white); }
+50%  { filter:drop-shadow(0 0 var(--glow) black); }
+60%  { filter:drop-shadow(0 0 var(--glow) yellow); }
+70%  { filter:drop-shadow(0 0 var(--glow) lime); }
+80%  { filter:drop-shadow(0 0 var(--glow) purple); }
+100% { filter:drop-shadow(0 0 var(--glow) blue); }
 }
 
 /* PANEL MENÚ */
@@ -106,59 +100,44 @@ button.secondary{
   color:var(--text);
   border:2px solid var(--accent);
 }
+
+iframe{
+  border:none;
+  background:white;
+  width:100%;
+  max-width:640px;
+  height:360px;
+  margin-top:20px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- DOS IMÁGENES ARRIBA -->
+<!-- LOGOS ARRIBA -->
 <div class="top-logos">
   <img src="logo.png" class="logo glow" alt="Logo">
   <img src="icon.png" class="icon glow" alt="Icon">
 </div>
 
-<!-- MENÚ -->
+<!-- PANEL MENÚ -->
 <div class="panel">
   <h2>Vega Junkys</h2>
   <p>Incredibox • Sprunki Mod</p>
-
   <ul>
-    <li><button onclick="location.href='game.html'">▶ PLAY</button></li>
     <li>
-      <button class="secondary"
-        onclick="window.open('https://incredibox-vega-junkys.fandom.com')">
+      <!-- Aquí se reemplaza PLAY por el iframe embebido -->
+      <iframe src="https://forkphorus.github.io/embed.html?id=1264207043&auto-start=true" 
+        allowfullscreen="true" allowtransparency="true">
+      </iframe>
+    </li>
+    <li>
+      <button class="secondary" onclick="window.open('https://incredibox-vega-junkys.fandom.com')">
         📘 WIKI FANDOM
       </button>
     </li>
-    <li><button class="secondary" onclick="toggleGlow()">✨ BRILLO ON / OFF</button></li>
-    <li><button class="secondary" onclick="brilloMas()">🔆 BRILLO +</button></li>
-    <li><button class="secondary" onclick="brilloMenos()">🔅 BRILLO −</button></li>
-    <li><button class="secondary" onclick="toggleMode()">🌗 MODO BLANCO / NEGRO</button></li>
   </ul>
 </div>
-
-<script>
-let glow = 16;
-
-function toggleGlow(){
-  document.querySelectorAll('.logo, .icon')
-    .forEach(el => el.classList.toggle('glow'));
-}
-
-function brilloMas(){
-  glow = Math.min(glow + 4, 40);
-  document.documentElement.style.setProperty('--glow', glow + 'px');
-}
-
-function brilloMenos(){
-  glow = Math.max(glow - 4, 6);
-  document.documentElement.style.setProperty('--glow', glow + 'px');
-}
-
-function toggleMode(){
-  document.body.classList.toggle('light');
-}
-</script>
 
 </body>
 </html>
